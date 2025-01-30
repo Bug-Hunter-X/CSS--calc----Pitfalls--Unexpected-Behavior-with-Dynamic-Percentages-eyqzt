@@ -1,0 +1,22 @@
+Several approaches can mitigate the `calc()` issue when dealing with dynamic percentage values:
+
+1. **Explicitly set parent width:** If possible, define the parent container's width explicitly. This ensures that `calc()` has a definitive value to work with.
+
+2. **Alternative layout techniques:** Consider using techniques like Flexbox or Grid, which often provide more robust and predictable ways to manage element sizes and layouts, reducing the reliance on `calc()` in scenarios with dynamic dimensions.  These layout methods often handle percentage-based calculations more effectively than `calc()` does with dynamic parents.
+
+3. **JavaScript (as a last resort):**  In very specific situations, you could use JavaScript to dynamically calculate the width after the parent's width is known. This approach, however, is usually less efficient and generally should be avoided in favor of pure CSS solutions.
+
+Example using Flexbox (from `bugSolution.css`):
+
+```css
+.container {
+  width: 50%; /* Percentage will now work reliably with Flexbox */
+  margin-left: 10px; /* Add margin instead of subtracting from width */
+}
+
+.parent {
+  display: flex; /* Use Flexbox */
+}
+```
+
+This approach replaces the width calculation with a simpler percentage and adds margin instead of subtracting from the width. This is generally more reliable for dynamic layouts.

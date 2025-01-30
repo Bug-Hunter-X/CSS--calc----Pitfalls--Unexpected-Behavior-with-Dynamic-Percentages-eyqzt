@@ -1,0 +1,15 @@
+The CSS property `calc()` is used to perform calculations. However, there's a subtle error that can occur when using it with percentages. Consider this example:
+
+```css
+.container {
+  width: calc(50% - 10px);
+}
+```
+
+This might seem straightforward—it should make the container 50% of its parent's width, minus 10 pixels. But what if the parent's width is itself dynamic? Or if it's not set explicitly?
+
+The problem is that the browser needs to know the parent's width *before* it can calculate the container's width.  If the parent's width isn't fully determined, the `calc()` function might produce unexpected results or even not work as intended.
+
+The issue is more pronounced when percentages and other dynamic values are combined in more complex calculations within `calc()`.
+
+In short, while `calc()` is powerful, ensuring all values it depends on are resolved before calculation is crucial. Unexpected results can occur when calculations involve dynamic or unresolved percentage values.
